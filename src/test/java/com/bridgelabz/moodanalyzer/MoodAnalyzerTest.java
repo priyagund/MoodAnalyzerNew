@@ -33,4 +33,23 @@ public class MoodAnalyzerTest {
         }
 
     }
+
+    @Test
+    public void giveEmptyMethod_shouldReturnHappy() {
+        MoodAnalyzer moodAnalyzer = new MoodAnalyzer("");
+        try{
+            moodAnalyzer.analyzeMood();
+            ExpectedException expectedException = ExpectedException.none();
+            expectedException.expect(MoodAnalyzerException.class);
+
+        }
+        catch (MoodAnalyzerException e)
+        {
+            Assert.assertEquals("enter the proper mood",e.getMessage());
+        }
+
+    }
+
+
+
 }
