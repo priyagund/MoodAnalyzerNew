@@ -57,4 +57,19 @@ public class MoodAnalyzerTest {
 
         }
     }
+
+    @Test
+    public void givenMessage_WhenNotValid_noSuchMethod()
+    {
+        MoodAnalyzer moodAnalyzer= new MoodAnalyzer();
+
+        try {
+            MoodAnalyzer  moodAnalyzers=MoodAnalyzerFactory.createMoodAnalyzer();
+            Assert.assertEquals(true,moodAnalyzer.equals(moodAnalyzers));
+
+        } catch (MoodAnalyzerException e) {
+            Assert.assertEquals(MoodAnalyzerException.ExceptionType.NO_SUCH_METHOD,e.type);
+
+        }
+    }
 }

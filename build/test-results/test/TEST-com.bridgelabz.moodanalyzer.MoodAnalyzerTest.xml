@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.bridgelabz.moodanalyzer.MoodAnalyzerTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2019-11-26T10:42:26" hostname="admin105-desktop" time="0.002">
+<testsuite name="com.bridgelabz.moodanalyzer.MoodAnalyzerTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2019-11-26T10:50:38" hostname="admin105-desktop" time="0.001">
   <properties/>
-  <testcase name="givenMessage_WhenNotValid_noSuchClass" classname="com.bridgelabz.moodanalyzer.MoodAnalyzerTest" time="0.002"/>
+  <testcase name="givenMessage_WhenNotValid_noSuchMethod" classname="com.bridgelabz.moodanalyzer.MoodAnalyzerTest" time="0.001"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
