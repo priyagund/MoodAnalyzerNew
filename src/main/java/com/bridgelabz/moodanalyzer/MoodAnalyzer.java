@@ -2,7 +2,7 @@ package com.bridgelabz.moodanalyzer;
 
 
 public class MoodAnalyzer {
-    private String message;
+    private String message=null;
 
     public MoodAnalyzer() {
 
@@ -29,9 +29,12 @@ public class MoodAnalyzer {
 
     }
 
-    @Override
-    public boolean equals(Object obj) {
-        return (((MoodAnalyzer) obj).message.equals(this.message));
+
+    public boolean equals(MoodAnalyzer obj) {
+
+        if (this.message == obj.message)
+            return true;
+        return false;
     }
 
 
