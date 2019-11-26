@@ -1,7 +1,6 @@
 package com.bridgelabz.moodanalyzer;
 
-public class MoodAnalyzer
-{
+public class MoodAnalyzer {
     private String message;
 
     public MoodAnalyzer(String message)
@@ -9,17 +8,24 @@ public class MoodAnalyzer
         this.message=message;
     }
 
-    public String MoodAnalyzer() {
-        return this.analyzeMood(message);
+    public MoodAnalyzer(){
+
     }
 
-    public String analyzeMood(String message)
-    {
-        if(message.contains("SAD")){
-            return "SAD";
+    public String analyzeMood() {
+        try{
+            if (message.contains("HAPPY")) {
+                return "SAD";
+            } else {
+                return "HAPPY";
+            }
         }
-        else {
+          catch (NullPointerException e){
+            e.printStackTrace();
+          }
             return "HAPPY";
+
+
         }
     }
-}
+
