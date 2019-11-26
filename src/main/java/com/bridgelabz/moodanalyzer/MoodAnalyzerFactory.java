@@ -16,7 +16,7 @@ public class MoodAnalyzerFactory {
             throw new MoodAnalyzerException(MoodAnalyzerException.ExceptionType.NO_SUCH_CLASS,"class not found");
 
         } catch (NoSuchMethodException e) {
-            e.printStackTrace();
+            throw new MoodAnalyzerException(MoodAnalyzerException.ExceptionType.NO_SUCH_METHOD,"method not found");
         } catch (IllegalAccessException e) {
             e.printStackTrace();
         } catch (InstantiationException e) {
