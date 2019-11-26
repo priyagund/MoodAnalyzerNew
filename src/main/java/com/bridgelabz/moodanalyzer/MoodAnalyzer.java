@@ -1,6 +1,6 @@
 package com.bridgelabz.moodanalyzer;
 
-<<<<<<< HEAD
+
 public class MoodAnalyzer
 {
    private String message;
@@ -12,19 +12,7 @@ public class MoodAnalyzer
     public MoodAnalyzer(String message) {
         this.message = message;
     }
-=======
-public class MoodAnalyzer {
-    private String message;
->>>>>>> uc2_exception
 
-    public MoodAnalyzer(String message)
-    {
-        this.message=message;
-    }
-
-    public MoodAnalyzer(){
-
-    }
 
     public String analyzeMood() {
         try{

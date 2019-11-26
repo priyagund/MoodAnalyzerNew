@@ -1,17 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<<<<<<< HEAD
-<testsuite name="com.bridgelabz.moodanalyzer.MoodAnalyzerTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2019-11-26T05:59:18" hostname="admin105-desktop" time="0.001">
+<testsuite name="com.bridgelabz.moodanalyzer.MoodAnalyzerTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2019-11-26T07:47:46" hostname="admin105-desktop" time="0.017">
   <properties/>
-  <testcase name="giveMessage_whenSad_shouldReturnSad" classname="com.bridgelabz.moodanalyzer.MoodAnalyzerTest" time="0.001"/>
-=======
-<testsuite name="com.bridgelabz.moodanalyzer.MoodAnalyzerTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2019-11-26T07:01:48" hostname="admin105-desktop" time="0.012">
-  <properties/>
-  <testcase name="giveMesaage_whenHappy_shouldReturnHappy" classname="com.bridgelabz.moodanalyzer.MoodAnalyzerTest" time="0.012"/>
->>>>>>> uc2_exception
+  <testcase name="giveNullMood_shouldReturnHappy" classname="com.bridgelabz.moodanalyzer.MoodAnalyzerTest" time="0.017"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[java.lang.NullPointerException
-	at com.bridgelabz.moodanalyzer.MoodAnalyzer.analyzeMood(MoodAnalyzer.java:17)
-	at com.bridgelabz.moodanalyzer.MoodAnalyzerTest.giveMesaage_whenHappy_shouldReturnHappy(MoodAnalyzerTest.java:20)
+	at com.bridgelabz.moodanalyzer.MoodAnalyzer.analyzeMood(MoodAnalyzer.java:19)
+	at com.bridgelabz.moodanalyzer.MoodAnalyzerTest.giveNullMood_shouldReturnHappy(MoodAnalyzerTest.java:23)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
