@@ -14,7 +14,7 @@ public class MoodAnalyzer {
 
     public String analyzeMood() {
         try{
-            if (message.contains("HAPPY")) {
+            if (message.contains("SAD")) {
                 return "SAD";
             } else {
                 return "HAPPY";
@@ -22,8 +22,9 @@ public class MoodAnalyzer {
         }
           catch (NullPointerException e){
             e.printStackTrace();
+              return "HAPPY";
           }
-            return "HAPPY";
+
 
 
         }

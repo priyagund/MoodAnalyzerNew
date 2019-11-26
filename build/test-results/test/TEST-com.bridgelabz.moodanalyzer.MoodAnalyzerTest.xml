@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.bridgelabz.moodanalyzer.MoodAnalyzerTest" tests="2" skipped="0" failures="1" errors="0" timestamp="2019-11-26T06:48:00" hostname="admin105-desktop" time="0.007">
+<testsuite name="com.bridgelabz.moodanalyzer.MoodAnalyzerTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2019-11-26T07:01:48" hostname="admin105-desktop" time="0.012">
   <properties/>
-  <testcase name="giveMesaage_whenHappy_shouldReturnHappy" classname="com.bridgelabz.moodanalyzer.MoodAnalyzerTest" time="0.002"/>
-  <testcase name="giveMessage_whenSad_shouldReturnSad" classname="com.bridgelabz.moodanalyzer.MoodAnalyzerTest" time="0.004">
-    <failure message="org.junit.ComparisonFailure: expected:&lt;[SAD]&gt; but was:&lt;[HAPPY]&gt;" type="org.junit.ComparisonFailure">org.junit.ComparisonFailure: expected:&lt;[SAD]&gt; but was:&lt;[HAPPY]&gt;
-	at org.junit.Assert.assertEquals(Assert.java:115)
-	at org.junit.Assert.assertEquals(Assert.java:144)
-	at com.bridgelabz.moodanalyzer.MoodAnalyzerTest.giveMessage_whenSad_shouldReturnSad(MoodAnalyzerTest.java:13)
+  <testcase name="giveMesaage_whenHappy_shouldReturnHappy" classname="com.bridgelabz.moodanalyzer.MoodAnalyzerTest" time="0.012"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[java.lang.NullPointerException
+	at com.bridgelabz.moodanalyzer.MoodAnalyzer.analyzeMood(MoodAnalyzer.java:17)
+	at com.bridgelabz.moodanalyzer.MoodAnalyzerTest.giveMesaage_whenHappy_shouldReturnHappy(MoodAnalyzerTest.java:20)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -54,8 +53,5 @@
 	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
 	at org.gradle.internal.concurrent.ThreadFactoryImpl$ManagedThreadRunnable.run(ThreadFactoryImpl.java:55)
 	at java.base/java.lang.Thread.run(Thread.java:834)
-</failure>
-  </testcase>
-  <system-out><![CDATA[]]></system-out>
-  <system-err><![CDATA[]]></system-err>
+]]></system-err>
 </testsuite>
