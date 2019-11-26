@@ -1,5 +1,6 @@
 package com.bridgelabz.moodanalyzer;
 
+<<<<<<< HEAD
 public class MoodAnalyzer
 {
     private String message;
@@ -10,10 +11,23 @@ public class MoodAnalyzer
     }
 
     public MoodAnalyzer(){
+=======
+
+public class MoodAnalyzer
+{
+   private String message;
+    public MoodAnalyzer()
+    {
 
     }
 
-    public String analyzeMood() {
+    public MoodAnalyzer(String message) {
+        this.message = message;
+    }
+>>>>>>> uc3_invalid_mood
+
+
+    public String analyzeMood() throws MoodAnalyzerException {
         try{
             if (message.contains("SAD")) {
                 return "SAD";
@@ -21,6 +35,7 @@ public class MoodAnalyzer
                 return "HAPPY";
             }
         }
+<<<<<<< HEAD
         catch (NullPointerException e){
             e.printStackTrace();
             return "HAPPY";
@@ -29,5 +44,17 @@ public class MoodAnalyzer
 
 
     }
+=======
+          catch (NullPointerException e){
+          throw new MoodAnalyzerException("please enter valid mood");
+
+          }
+
+
+
+        }
+
+
+>>>>>>> uc3_invalid_mood
 }
 
