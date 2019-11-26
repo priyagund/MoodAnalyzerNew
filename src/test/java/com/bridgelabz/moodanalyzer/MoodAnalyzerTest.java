@@ -19,18 +19,11 @@ public class MoodAnalyzerTest {
     }
 
     @Test
-    public void giveNullMood_shouldReturnHappy() {
+    public void giveNullMood_shouldReturnHappy() throws MoodAnalyzerException {
         MoodAnalyzer moodAnalyzer = new MoodAnalyzer(null);
-        try{
-            moodAnalyzer.analyzeMood();
-            ExpectedException expectedException = ExpectedException.none();
-            expectedException.expect(MoodAnalyzerException.class);
-
-        }
-        catch (MoodAnalyzerException e)
-        {
-            Assert.assertEquals("enter the proper mood",e.getMessage());
-        }
+        moodAnalyzer.analyzeMood();
+        ExpectedException expectedException = ExpectedException.none();
+        expectedException.expect(MoodAnalyzerException.class);
 
     }
 
@@ -50,6 +43,18 @@ public class MoodAnalyzerTest {
 
     }
 
+    @Test
+    public void givenMessage_WhenNotValid_noSuchClass()
+    {
+        MoodAnalyzer moodAnalyzer= new MoodAnalyzer();
 
+        try {
+            MoodAnalyzer  moodAnalyzers=MoodAnalyzerFactory.createMoodAnalyzer();
+            Assert.assertEquals(true,moodAnalyzer.equals(moodAnalyzers));
 
+        } catch (MoodAnalyzerException e) {
+            Assert.assertEquals(MoodAnalyzerException.ExceptionType.NO_SUCH_CLASS,e.type);
+
+        }
+    }
 }
