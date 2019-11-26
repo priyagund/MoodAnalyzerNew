@@ -1,21 +1,8 @@
 package com.bridgelabz.moodanalyzer;
 
-<<<<<<< HEAD
 public class MoodAnalyzer
 {
-   private String message;
-    public MoodAnalyzer()
-    {
-
-    }
-
-    public MoodAnalyzer(String message) {
-        this.message = message;
-    }
-=======
-public class MoodAnalyzer {
     private String message;
->>>>>>> uc2_exception
 
     public MoodAnalyzer(String message)
     {
@@ -34,13 +21,13 @@ public class MoodAnalyzer {
                 return "HAPPY";
             }
         }
-          catch (NullPointerException e){
+        catch (NullPointerException e){
             e.printStackTrace();
-              return "HAPPY";
-          }
-
-
-
+            return "HAPPY";
         }
+
+
+
     }
+}
 

@@ -9,14 +9,10 @@ public class MoodAnalyzerTest
     @Test
     public void giveMessage_whenSad_shouldReturnSad()
     {
-<<<<<<< HEAD
-        MoodAnalyzer moodAnalyzer=new MoodAnalyzer();
-        String sadMood=moodAnalyzer.analyzeMood("THIS IS SAD MOOD");
-        Assert.assertEquals("SAD",moodAnalyzer.analyzeMood("THIS IS SAD MOOD ") );
-=======
+
         MoodAnalyzer moodAnalyzer=new MoodAnalyzer("i am in sad mood");
         Assert.assertEquals("SAD",moodAnalyzer.analyzeMood() );
->>>>>>> uc2_exception
+
     }
 
     @Test
