@@ -2,7 +2,7 @@ package com.bridgelabz.moodanalyzer;
 
 
 public class MoodAnalyzer {
-    private String message=null;
+    private String message = null;
 
     public MoodAnalyzer() {
 

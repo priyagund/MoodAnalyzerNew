@@ -30,45 +30,41 @@ public class MoodAnalyzerTest {
     @Test
     public void giveEmptyMethod_shouldReturnHappy() {
         MoodAnalyzer moodAnalyzer = new MoodAnalyzer("");
-        try{
+        try {
             moodAnalyzer.analyzeMood();
             ExpectedException expectedException = ExpectedException.none();
             expectedException.expect(MoodAnalyzerException.class);
 
-        }
-        catch (MoodAnalyzerException e)
-        {
-            Assert.assertEquals("enter the proper mood",e.getMessage());
+        } catch (MoodAnalyzerException e) {
+            Assert.assertEquals("enter the proper mood", e.getMessage());
         }
 
     }
 
     @Test
-    public void givenMessage_WhenNotValid_noSuchClass()
-    {
-        MoodAnalyzer moodAnalyzer= new MoodAnalyzer();
+    public void givenMessage_WhenNotValid_noSuchClass() {
+        MoodAnalyzer moodAnalyzer = new MoodAnalyzer();
 
         try {
-            MoodAnalyzer  moodAnalyzers=MoodAnalyzerFactory.createMoodAnalyzer();
-            Assert.assertEquals(true,moodAnalyzer.equals(moodAnalyzers));
+            MoodAnalyzer moodAnalyzers = MoodAnalyzerFactory.createMoodAnalyzer();
+            Assert.assertEquals(true, moodAnalyzer.equals(moodAnalyzers));
 
         } catch (MoodAnalyzerException e) {
-            Assert.assertEquals(MoodAnalyzerException.ExceptionType.NO_SUCH_CLASS,e.type);
+            Assert.assertEquals(MoodAnalyzerException.ExceptionType.NO_SUCH_CLASS, e.type);
 
         }
     }
 
     @Test
-    public void givenMessage_WhenNotValid_noSuchMethod()
-    {
-        MoodAnalyzer moodAnalyzer= new MoodAnalyzer();
+    public void givenMessage_WhenNotValid_noSuchMethod() {
+        MoodAnalyzer moodAnalyzer = new MoodAnalyzer();
 
         try {
-            MoodAnalyzer  moodAnalyzers=MoodAnalyzerFactory.createMoodAnalyzer();
-            Assert.assertEquals(true,moodAnalyzer.equals(moodAnalyzers));
+            MoodAnalyzer moodAnalyzers = MoodAnalyzerFactory.createMoodAnalyzer();
+            Assert.assertEquals(true, moodAnalyzer.equals(moodAnalyzers));
 
         } catch (MoodAnalyzerException e) {
-            Assert.assertEquals(MoodAnalyzerException.ExceptionType.NO_SUCH_METHOD,e.type);
+            Assert.assertEquals(MoodAnalyzerException.ExceptionType.NO_SUCH_METHOD, e.type);
 
         }
     }
