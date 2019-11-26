@@ -29,7 +29,7 @@ public class MoodAnalyzerTest {
         }
         catch (MoodAnalyzerException e)
         {
-            Assert.assertEquals("please enter valid mood",e.getMessage());
+            Assert.assertEquals("enter the proper mood",e.getMessage());
         }
 
     }
