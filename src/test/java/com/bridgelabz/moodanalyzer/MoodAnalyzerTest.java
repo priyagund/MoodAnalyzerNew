@@ -7,18 +7,9 @@ import org.junit.rules.ExpectedException;
 public class MoodAnalyzerTest {
 
     @Test
-<<<<<<< HEAD
-    public void giveMessage_whenSad_shouldReturnSad()
-    {
-
-        MoodAnalyzer moodAnalyzer=new MoodAnalyzer("i am in sad mood");
-        Assert.assertEquals("SAD",moodAnalyzer.analyzeMood() );
-
-=======
     public void giveMessage_whenSad_shouldReturnSad() throws MoodAnalyzerException {
         MoodAnalyzer moodAnalyzer = new MoodAnalyzer("i am in sad mood");
         Assert.assertEquals("SAD", moodAnalyzer.analyzeMood());
->>>>>>> uc3_invalid_mood
     }
 
     @Test
@@ -36,11 +27,10 @@ public class MoodAnalyzerTest {
             expectedException.expect(MoodAnalyzerException.class);
 
         }
-       catch (MoodAnalyzerException e)
-       {
-           Assert.assertEquals("please enter valid mood",e.getMessage());
-       }
+        catch (MoodAnalyzerException e)
+        {
+            Assert.assertEquals("please enter valid mood",e.getMessage());
+        }
 
     }
-
 }
