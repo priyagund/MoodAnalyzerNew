@@ -30,7 +30,7 @@ public class MoodAnalyzerTest {
     }
 
     @Test
-    public void giveEmptyMethod_shouldThrowsMoodAnalyzeException() throws MoodAnalyzerException{
+    public void giveEmptyMethod_shouldThrowsMoodAnalyzeException() throws MoodAnalyzerException {
         MoodAnalyzer moodAnalyzer = new MoodAnalyzer("");
         try {
             moodAnalyzer.analyzeMood();
@@ -45,24 +45,28 @@ public class MoodAnalyzerTest {
     }
 
     @Test
-    public void giveMessage_WhenTwoObjectEqual_ReturnObject()  {
-            MoodAnalyzer moodAnalyzer=null;
-            try {
-                moodAnalyzer = MoodAnalyzerReflector.createMoodAnalyzer("");
-                Assert.assertEquals(new MoodAnalyzer("i am in happy mood"), moodAnalyzer);
-            }catch (MoodAnalyzerException e){
-                e.printStackTrace();
-            }
+    public void giveMessage_WhenTwoObjectEqual_ReturnObject() {
+        MoodAnalyzer moodAnalyzer = null;
+        try {
+            MoodAnalyzer moodAnalyser = new MoodAnalyzer();
+            Constructor<?> constructor = MoodAnalyzerReflector.getConstructor();
+            Object myObject = MoodAnalyzerReflector.createMoodAnalyzer(constructor);
+            Assert.assertEquals(new MoodAnalyzer("i am in happy mood"), moodAnalyzer);
+        } catch (MoodAnalyzerException e) {
+            e.printStackTrace();
+        }
 
-}
+    }
 
     @Test
     public void givenMessage_WhenNotValid_noSuchClass() {
         MoodAnalyzer moodAnalyzer = new MoodAnalyzer();
 
         try {
-            MoodAnalyzer moodAnalyzers = MoodAnalyzerReflector.createMoodAnalyzer("");
-            Assert.assertEquals(true, moodAnalyzer.equals(moodAnalyzers));
+            MoodAnalyzer moodAnalyser = new MoodAnalyzer();
+            Constructor<?> constructor = MoodAnalyzerReflector.getConstructor();
+            Object myObject = MoodAnalyzerReflector.createMoodAnalyzer(constructor);
+            Assert.assertEquals(true, moodAnalyzer.equals(myObject));
 
         } catch (MoodAnalyzerException e) {
             Assert.assertEquals(MoodAnalyzerException.ExceptionType.NO_SUCH_CLASS, e.type);
@@ -71,39 +75,28 @@ public class MoodAnalyzerTest {
     }
 
     @Test
-    public void givenMessage_WhenNotValid_noSuchMethod() {
-        MoodAnalyzer moodAnalyzer = new MoodAnalyzer();
+    public void givenHappyMessage_withReflection_shouldReturnObject() throws MoodAnalyzerException {
 
         try {
-            MoodAnalyzer moodAnalyzers = MoodAnalyzerReflector.createMoodAnalyzer("");
-            Assert.assertEquals(true, moodAnalyzer.equals(moodAnalyzers));
-
-        } catch (MoodAnalyzerException e) {
-            Assert.assertEquals(MoodAnalyzerException.ExceptionType.NO_SUCH_METHOD, e.type);
-
-        }
-    }
-
-    @Test
-    public void givenHappyMessage_withReflection_shouldReturnHappy() throws IllegalAccessException {
-
-        try {
-            Object myObject = MoodAnalyzerReflector.createMoodAnalyzer("i am in happy mood");
-            Object mood = MoodAnalyzerReflector.invokeMethod(myObject, "analyzeMood");
-            Assert.assertEquals("HAPPY",mood);
+            MoodAnalyzer moodAnalyser = new MoodAnalyzer();
+            Constructor<?> constructor = MoodAnalyzerReflector.getConstructor();
+            Object myObject = MoodAnalyzerReflector.createMoodAnalyzer(constructor);
+            Assert.assertEquals(false, moodAnalyser.equals(myObject));
         } catch (MoodAnalyzerException e) {
             e.printStackTrace();
         }
 
     }
 
+    //
     @Test
     public void givenMoodAnalyzer_InChangeMood_shouldReturnHappy() throws MoodAnalyzerException, IllegalAccessException {
-        Object myObject=MoodAnalyzerReflector.createMoodAnalyzer("");
+        Constructor<?> constructor = MoodAnalyzerReflector.getConstructor();
+        Object myObject = MoodAnalyzerReflector.createMoodAnalyzer(constructor);
 
-        MoodAnalyzerReflector.setFieldValue(myObject,"message","i am in happy mood");
-        Object mood=MoodAnalyzerReflector.invokeMethod(myObject,"analyzeMood");
-        Assert.assertEquals("HAPPY",mood);
+        MoodAnalyzerReflector.setFieldValue(myObject, "message", "i am in happy mood");
+        Object mood = MoodAnalyzerReflector.invokeMethod(myObject, "analyzeMood");
+        Assert.assertEquals("HAPPY", mood);
 
 
     }
@@ -111,21 +104,28 @@ public class MoodAnalyzerTest {
     @Test
     public void givenHappyMessage_withDefaultConstructor_shouldReturnHappy() throws IllegalAccessException {
         try {
-            MoodAnalyzer myObject = MoodAnalyzerReflector.createMoodAnalyzer("");
-            MoodAnalyzerReflector.setFieldValue(myObject,"message","i am in happy mood");
-            Object mood=MoodAnalyzerReflector.invokeMethod(myObject,"analyzeMood");
-            Assert.assertEquals("HAPPY",mood);
+            Constructor<?> constructor = MoodAnalyzerReflector.getConstructor();
+            Object myObject = MoodAnalyzerReflector.createMoodAnalyzer(constructor);
+            MoodAnalyzerReflector.setFieldValue(myObject, "message", "i am in happy mood");
+            Object mood = MoodAnalyzerReflector.invokeMethod(myObject, "analyzeMood");
+            Assert.assertEquals("HAPPY", mood);
         } catch (MoodAnalyzerException e) {
             e.printStackTrace();
         }
     }
 
+
     @Test
-    public void givenMessage_withDefaultConstructor_shouldReturnHappy()
-    {
+    public void givenMessage_withDefaultConstructor_shouldReturnHappy() {
         try {
-            Constructor<?> constructor=MoodAnalyzerReflector.getConstructor();
-        } catch (NoSuchMethodException e) {
+            Constructor<?> constructor = MoodAnalyzerReflector.getConstructor();
+            Object myObject = MoodAnalyzerReflector.createMoodAnalyzer(constructor);
+            MoodAnalyzerReflector.setFieldValue(myObject, "message", "i am in happy mood");
+            Object mood = MoodAnalyzerReflector.invokeMethod(myObject, "analyzeMood");
+            Assert.assertEquals("HAPPY", mood);
+        } catch (MoodAnalyzerException e) {
+            e.printStackTrace();
+        } catch (IllegalAccessException e) {
             e.printStackTrace();
         }
     }

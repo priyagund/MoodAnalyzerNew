@@ -7,17 +7,30 @@ import java.lang.reflect.InvocationTargetException;
 public class MoodAnalyzerReflector {
 
 
-    public static Constructor<?> getConstructor(Class<?> ... param) throws NoSuchMethodException {
-        Class<?> moodAnalyzerClass = null;
+    public static Constructor<?> getConstructor(Class<?> ... param) throws MoodAnalyzerException {
         try {
-            moodAnalyzerClass = Class.forName("com.bridgelabz.moodanalyzer.MoodAnalyzer");
+            Class<?> moodAnalyserClass = Class.forName("com.bridgelabz.moodanalyzer.MoodAnalyzer");
+            return moodAnalyserClass.getConstructor(param);
+
         } catch (ClassNotFoundException e) {
-            e.printStackTrace();
+            throw new MoodAnalyzerException(MoodAnalyzerException.ExceptionType.NO_SUCH_CLASS,e.getMessage());
+        }catch (NoSuchMethodException e) {
+            throw new MoodAnalyzerException(MoodAnalyzerException.ExceptionType.NO_SUCH_METHOD,e.getMessage());
         }
-       return moodAnalyzerClass.getConstructor(param);
+    }
+    public static Object createMoodAnalyzer(Constructor<?> constructor,Object ... message) throws MoodAnalyzerException {
+        try {
+            return constructor.newInstance(message);
+        } catch (InstantiationException e) {
+            throw new MoodAnalyzerException(MoodAnalyzerException.ExceptionType.NO_SUCH_CLASS,e.getMessage());
+        } catch (IllegalAccessException e) {
+            throw new MoodAnalyzerException(MoodAnalyzerException.ExceptionType.NO_SUCH_METHOD,e.getMessage());
+        } catch (InvocationTargetException e) {
+            throw new MoodAnalyzerException(MoodAnalyzerException.ExceptionType.NO_SUCH_METHOD,e.getMessage());
+        }
     }
 
-    public static MoodAnalyzer createMoodAnalyzer() throws MoodAnalyzerException {
+  /*  public static MoodAnalyzer createMoodAnalyzer() throws MoodAnalyzerException {
         Object obj = null;
         try {
             Class<?> moodAnalyzerClass = Class.forName("com.bridgelabz.moodanalyzer.MoodAnalyzer");
@@ -38,7 +51,9 @@ public class MoodAnalyzerReflector {
         }
         return null;
     }
-    public static MoodAnalyzer createMoodAnalyzer(String message) throws MoodAnalyzerException {
+    */
+
+ /*   public static MoodAnalyzer createMoodAnalyzer(String message) throws MoodAnalyzerException {
         Object obj = null;
         try {
             Class<?> moodAnalyzerClass = Class.forName("com.bridgelabz.moodanalyzer.MoodAnalyzer");
@@ -59,6 +74,8 @@ public class MoodAnalyzerReflector {
         }
         return null;
     }
+
+  */
     public static Object invokeMethod(Object moodAnalyserObject,String methodName) throws MoodAnalyzerException, IllegalAccessException {
         try {
             return moodAnalyserObject.getClass().getMethod(methodName).invoke(moodAnalyserObject);
@@ -70,7 +87,7 @@ public class MoodAnalyzerReflector {
 // return null;
     }
 
-    public static void setFieldValue(Object myObject, String fieldName, String fieldValue) throws MoodAnalyzerException {
+    public static Object setFieldValue(Object myObject, String fieldName, String fieldValue) throws MoodAnalyzerException {
         try {
             Field field = myObject.getClass().getDeclaredField(fieldName);
             field.setAccessible(true);
@@ -81,5 +98,7 @@ public class MoodAnalyzerReflector {
         catch (IllegalAccessException e) {
             throw new MoodAnalyzerException(MoodAnalyzerException.ExceptionType.FIELD_SETTING_ISSUE,"May be Issues with Data Entered");
         }
+        return myObject;
     }
+
 }
