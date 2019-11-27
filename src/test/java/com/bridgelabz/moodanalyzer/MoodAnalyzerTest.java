@@ -19,7 +19,7 @@ public class MoodAnalyzerTest {
     }
 
     @Test
-    public void giveNullMood_shouldReturnHappy() throws MoodAnalyzerException {
+    public void giveNullMood_shouldThrowsMoodAnalyzeException() throws MoodAnalyzerException {
         MoodAnalyzer moodAnalyzer = new MoodAnalyzer(null);
         moodAnalyzer.analyzeMood();
         ExpectedException expectedException = ExpectedException.none();
@@ -28,7 +28,7 @@ public class MoodAnalyzerTest {
     }
 
     @Test
-    public void giveEmptyMethod_shouldReturnHappy() {
+    public void giveEmptyMethod_shouldThrowsMoodAnalyzeException() throws MoodAnalyzerException{
         MoodAnalyzer moodAnalyzer = new MoodAnalyzer("");
         try {
             moodAnalyzer.analyzeMood();
@@ -39,7 +39,20 @@ public class MoodAnalyzerTest {
             Assert.assertEquals("enter the proper mood", e.getMessage());
         }
 
+
     }
+
+    @Test
+    public void giveMessage_WhenTwoObjectEqual_ReturnObject()  {
+            MoodAnalyzer moodAnalyzer=null;
+            try {
+                moodAnalyzer = MoodAnalyzerFactory.createMoodAnalyzer();
+                Assert.assertEquals(new MoodAnalyzer("i am in happy mood"), moodAnalyzer);
+            }catch (MoodAnalyzerException e){
+                e.printStackTrace();
+            }
+
+}
 
     @Test
     public void givenMessage_WhenNotValid_noSuchClass() {
@@ -68,4 +81,6 @@ public class MoodAnalyzerTest {
 
         }
     }
+
+
 }
