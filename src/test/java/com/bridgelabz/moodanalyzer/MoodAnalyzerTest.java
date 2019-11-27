@@ -4,6 +4,8 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
 
+import java.lang.reflect.Constructor;
+
 public class MoodAnalyzerTest {
 
     @Test
@@ -46,7 +48,7 @@ public class MoodAnalyzerTest {
     public void giveMessage_WhenTwoObjectEqual_ReturnObject()  {
             MoodAnalyzer moodAnalyzer=null;
             try {
-                moodAnalyzer = MoodAnalyzerFactory.createMoodAnalyzer();
+                moodAnalyzer = MoodAnalyzerReflector.createMoodAnalyzer("");
                 Assert.assertEquals(new MoodAnalyzer("i am in happy mood"), moodAnalyzer);
             }catch (MoodAnalyzerException e){
                 e.printStackTrace();
@@ -59,7 +61,7 @@ public class MoodAnalyzerTest {
         MoodAnalyzer moodAnalyzer = new MoodAnalyzer();
 
         try {
-            MoodAnalyzer moodAnalyzers = MoodAnalyzerFactory.createMoodAnalyzer();
+            MoodAnalyzer moodAnalyzers = MoodAnalyzerReflector.createMoodAnalyzer("");
             Assert.assertEquals(true, moodAnalyzer.equals(moodAnalyzers));
 
         } catch (MoodAnalyzerException e) {
@@ -73,7 +75,7 @@ public class MoodAnalyzerTest {
         MoodAnalyzer moodAnalyzer = new MoodAnalyzer();
 
         try {
-            MoodAnalyzer moodAnalyzers = MoodAnalyzerFactory.createMoodAnalyzer();
+            MoodAnalyzer moodAnalyzers = MoodAnalyzerReflector.createMoodAnalyzer("");
             Assert.assertEquals(true, moodAnalyzer.equals(moodAnalyzers));
 
         } catch (MoodAnalyzerException e) {
@@ -82,5 +84,49 @@ public class MoodAnalyzerTest {
         }
     }
 
+    @Test
+    public void givenHappyMessage_withReflection_shouldReturnHappy() throws IllegalAccessException {
 
+        try {
+            Object myObject = MoodAnalyzerReflector.createMoodAnalyzer("i am in happy mood");
+            Object mood = MoodAnalyzerReflector.invokeMethod(myObject, "analyzeMood");
+            Assert.assertEquals("HAPPY",mood);
+        } catch (MoodAnalyzerException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    @Test
+    public void givenMoodAnalyzer_InChangeMood_shouldReturnHappy() throws MoodAnalyzerException, IllegalAccessException {
+        Object myObject=MoodAnalyzerReflector.createMoodAnalyzer("");
+
+        MoodAnalyzerReflector.setFieldValue(myObject,"message","i am in happy mood");
+        Object mood=MoodAnalyzerReflector.invokeMethod(myObject,"analyzeMood");
+        Assert.assertEquals("HAPPY",mood);
+
+
+    }
+
+    @Test
+    public void givenHappyMessage_withDefaultConstructor_shouldReturnHappy() throws IllegalAccessException {
+        try {
+            MoodAnalyzer myObject = MoodAnalyzerReflector.createMoodAnalyzer("");
+            MoodAnalyzerReflector.setFieldValue(myObject,"message","i am in happy mood");
+            Object mood=MoodAnalyzerReflector.invokeMethod(myObject,"analyzeMood");
+            Assert.assertEquals("HAPPY",mood);
+        } catch (MoodAnalyzerException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Test
+    public void givenMessage_withDefaultConstructor_shouldReturnHappy()
+    {
+        try {
+            Constructor<?> constructor=MoodAnalyzerReflector.getConstructor();
+        } catch (NoSuchMethodException e) {
+            e.printStackTrace();
+        }
+    }
 }
